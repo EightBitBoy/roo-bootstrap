@@ -90,20 +90,12 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 		copyDirectoryContents("styles/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "styles"), true);
 		copyDirectoryContents("WEB-INF/layouts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "layouts"), true);
 		copyDirectoryContents("WEB-INF/views/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "views"), true);
-		copyDirectoryContents("WEB-INF/tags/form/*.*",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form"), true);
-		copyDirectoryContents("WEB-INF/tags/form/fields/*.*",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form" + SEPARATOR + "fields"),
-				true);
-		copyDirectoryContents("WEB-INF/tags/menu/*.*",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "menu"), true);
-		copyDirectoryContents("WEB-INF/tags/util/*.*",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "util"), true);
-		copyFullDirectoryContents("META-INF/web-resources/dojo-1.7.2/**", "META-INF/web-resources/dojo-1.7.2/",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "dojo-1.7.2"), true);
-		copyDirectoryContents("META-INF/web-resources/spring-custom/*.*",
-				pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "spring-custom"),
-				true);
+		copyDirectoryContents("WEB-INF/tags/form/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form"), true);
+		copyDirectoryContents("WEB-INF/tags/form/fields/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form" + SEPARATOR + "fields"), true);
+		copyDirectoryContents("WEB-INF/tags/menu/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "menu"), true);
+		copyDirectoryContents("WEB-INF/tags/util/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "util"), true);
+		//copyFullDirectoryContents("META-INF/web-resources/dojo-1.7.2/**", "META-INF/web-resources/dojo-1.7.2/", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "dojo-1.7.2"), true);
+		//copyDirectoryContents("META-INF/web-resources/spring-custom/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "spring-custom"), true);
 
 	}
 
