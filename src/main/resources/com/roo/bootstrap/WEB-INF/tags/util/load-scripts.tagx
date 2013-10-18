@@ -10,7 +10,6 @@
 	<spring:url value="/${roo_css}" var="roo_css_url" />
 	<spring:url value="/resources/styles/standard.css" var="standard_url" />
 	<spring:url value="/resources/styles/bootstrap.css" var="bootstrap_url" />
-	<spring:url value="/resources/styles/bootstrap-theme.css" var="bootstrap_theme_url" />
 	<spring:url value="/resources/styles/custom.css" var="custom_url" />
 	
 	<spring:url value="/resources/js/bootstrap.min.js" var="bootstrap_js_url" />
@@ -18,10 +17,9 @@
 
 	<link rel="SHORTCUT ICON" href="${favicon}" />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
+	<!--link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" /-->
 	<link rel="stylesheet" href="${standard_url}" />
 	<link rel="stylesheet" href="${bootstrap_url}" />
-	<link rel="stylesheet" href="${bootstrap_theme_url}" />
 	<link rel="stylesheet" href="${custom_url}" />
 
 	<!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
