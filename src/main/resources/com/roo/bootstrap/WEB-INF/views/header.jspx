@@ -12,7 +12,7 @@
 	<spring:message code="button_home" var="home_label" htmlEscape="false" />
 	<spring:message code="application_name" var="app_name" htmlEscape="false"/>
   
-	<div class="navbar-inner">
+	<div>
 		<div class="container">
 			<a class="navbar-brand" href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">
 				<c:out value="${app_name}"/>
