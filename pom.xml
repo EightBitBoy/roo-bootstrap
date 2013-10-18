@@ -4,7 +4,7 @@
     <groupId>com.roo.bootstrap</groupId>
     <artifactId>de.eightbitboy.roo.bootstrap</artifactId>
     <packaging>bundle</packaging>
-    <version>0.2.0.BUILD</version>
+    <version>0.2.0</version>
     <name>roo-bootstrap</name>
     <organization>
         <name>Your project/company name goes here (used in copyright and vendor information in the manifest)</name>
