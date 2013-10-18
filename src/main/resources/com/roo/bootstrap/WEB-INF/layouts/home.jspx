@@ -37,7 +37,7 @@
 		<title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
 	</head>
 
-	<body class="tundra spring">
+	<body>
 	
 		<tiles:insertAttribute name="header" ignore="true" />
 	
