@@ -16,7 +16,7 @@ To activate the pluging fire up roo and type the following command:
 
 	osgi start --file://[YOUR_FILE_PATH]/de.eightbitboy.roo.bootstrap-0.2.0.jar
 
-For example at my machine it looks this:
+For example at my machine it looks this (notice the *three* slashes!):
 
 	osgi start --file:///C:/roo-bootstrap/de.eightbitboy.roo.bootstrap-0.2.0.jar
 
