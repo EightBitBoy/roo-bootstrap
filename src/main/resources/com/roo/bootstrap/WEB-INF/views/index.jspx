@@ -5,7 +5,7 @@
 	<spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
 
 	<!-- Main hero unit for a primary marketing message or call to action -->
-	<div class="hero-unit">
+	<div class="jumbotron">
 		<h1><spring:message code="welcome_h3" arguments="${app_name}" /></h1>
 		<p><spring:message code="welcome_text" /></p>
 	</div>

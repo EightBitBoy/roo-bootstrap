@@ -13,19 +13,19 @@
 	<spring:message code="application_name" var="app_name" htmlEscape="false"/>
   
 	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="brand" href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">
+		<div class="container">
+			<a class="navbar-brand" href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">
 				<c:out value="${app_name}"/>
 			</a>
 			<c:if test="${pageContext['request'].userPrincipal != null}">
 			<ul class="nav nav-pills pull-right">
 				<li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><![CDATA[<i class="icon-white icon-user"></i> ]]> ${pageContext['request'].userPrincipal.name} <![CDATA[<b class="caret"></b>]]></a>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><![CDATA[<i class="glyphicon-white glyphicon-user"></i> ]]> ${pageContext['request'].userPrincipal.name} <![CDATA[<b class="caret"></b>]]></a>
                 <ul class="dropdown-menu">
                   <spring:url value="/resources/j_spring_security_logout" var="logout" />
 					<li>
 					<a href="${logout}">
-						<![CDATA[<i class="icon-off"></i> ]]><spring:message code="security_logout" />
+						<![CDATA[<i class="glyphicon-off"></i> ]]><spring:message code="security_logout" />
 					</a>
 					</li>
                 </ul>
