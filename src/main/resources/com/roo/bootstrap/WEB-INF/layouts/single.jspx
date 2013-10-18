@@ -41,12 +41,12 @@
 	
 		<tiles:insertAttribute name="header" ignore="true" />
 	
-		<div class="container-fluid">
-			<div class="row-fluid">
+		<div class="container">
+			<div class="row">
 				<!--/span-->
-				<div class="span12">
+				<div class="col-md-12">
 	
-					<div class="row-fluid">
+					<div class="row">
 						<tiles:insertAttribute name="body" />
 					</div>
 	
