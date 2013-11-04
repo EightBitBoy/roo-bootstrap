@@ -28,7 +28,6 @@
 		<c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
 	</c:set>
 
-
-	<script src="${bootstrap_js_url}" type="text/javascript"><!-- --></script>
 	<script src="${jquery_js_url}" type="text/javascript"><!-- --></script>
+	<script src="${bootstrap_js_url}" type="text/javascript"><!-- --></script>
 </jsp:root>
