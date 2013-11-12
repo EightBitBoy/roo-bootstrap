@@ -15,7 +15,9 @@
     <spring:message code="global_language"/>
     <c:out value=": "/>
   	<util:language label="English" locale="en"/>
+  </span>
+  <span>
   	<c:out value=" | "/>
     <a href="http://www.fontawesome.io">Font Awesome</a>
-    </span>
+  </span>
 </div>
