@@ -25,3 +25,7 @@ To install roo-bootstrap in your project type the following command:
 	web mvc install bootstrap
 
 Contact me if things are not clear!
+
+## Related proojects
+
+Roo-bootstrap uses [dbootstrap](https://github.com/thesociable/dbootstrap), [roostrap](https://github.com/bhagyas/roostrap) and [Font Awesome](http://fontawesome.io/).
