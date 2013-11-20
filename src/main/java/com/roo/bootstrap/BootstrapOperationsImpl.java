@@ -90,6 +90,7 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 		copyDirectoryContents("js/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "js"), true);
 		copyDirectoryContents("fonts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "fonts"), true);
 		copyDirectoryContents("styles/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "styles"), true);
+		copyDirectoryContents("styles/font/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "styles/font"), true);
 		copyDirectoryContents("WEB-INF/layouts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "layouts"), true);
 		copyDirectoryContents("WEB-INF/views/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "views"), true);
 		copyDirectoryContents("WEB-INF/tags/form/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form"), true);
