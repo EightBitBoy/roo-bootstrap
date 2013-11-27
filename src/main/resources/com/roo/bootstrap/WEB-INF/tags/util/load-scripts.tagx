@@ -27,10 +27,10 @@
 
 	<!--link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" /-->
 	<link rel="stylesheet" type="text/css" href="${tundra_url}" />
-	<link rel="stylesheet" href="${awesome_url}" />
 	<link rel="stylesheet" href="${standard_url}" />
 	<link rel="stylesheet" href="${bootstrap_url}" />
 	<link rel="stylesheet" href="${dbootstrap_url}" />
+	<link rel="stylesheet" href="${awesome_url}" />
 	<link rel="stylesheet" href="${custom_url}" />
 
 	<!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
