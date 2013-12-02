@@ -96,9 +96,6 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 		copyDirectoryContents("WEB-INF/tags/form/fields/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "form" + SEPARATOR + "fields"), true);
 		copyDirectoryContents("WEB-INF/tags/menu/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "menu"), true);
 		copyDirectoryContents("WEB-INF/tags/util/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "tags" + SEPARATOR + "util"), true);
-		//copyFullDirectoryContents("META-INF/web-resources/dojo-1.7.2/**", "META-INF/web-resources/dojo-1.7.2/", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "dojo-1.7.2"), true);
-		//copyDirectoryContents("META-INF/web-resources/spring-custom/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_RESOURCES, "META-INF" + SEPARATOR + "web-resources" + SEPARATOR + "spring-custom"), true);
-
 	}
 
 	private void updatePomProperties(Element configuration) {
@@ -117,59 +114,4 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 		}
 		projectOperations.addDependencies(projectOperations.getFocusedModuleName(), dependencies);
 	}
-
-	private void copyFullDirectoryContents(final String sourceAntPath, final String sourceDirectory, String targetDirectory, final boolean replace) {
-		Validate.notBlank(sourceAntPath, "Source path required");
-		Validate.notBlank(targetDirectory, "Target directory required");
-
-		if (!targetDirectory.endsWith("/")) {
-			targetDirectory += "/";
-		}
-
-		if (!fileManager.exists(targetDirectory)) {
-			fileManager.createDirectory(targetDirectory);
-		}
-
-		final String path = FileUtils.getPath(getClass(), sourceAntPath);
-		final Iterable<URL> urls = OSGiUtils.findEntriesByPattern(context.getBundleContext(), path);
-		Validate.notNull(urls, "Could not search bundles for resources for Ant Path '" + path + "'");
-		for (final URL url : urls) {
-			final String filePath = url.getPath();
-			final String fileName = url.getPath().substring(url.getPath().lastIndexOf("/") + 1);
-			if (replace) {
-				try {
-					String contents = IOUtils.toString(url);
-					fileManager.createOrUpdateTextFileIfRequired(targetDirectory + getRelativeFilePath(sourceDirectory, filePath), contents, false);
-				} catch (final Exception e) {
-					throw new IllegalStateException(e);
-				}
-			} else {
-				if (!fileManager.exists(targetDirectory + fileName)) {
-					InputStream inputStream = null;
-					OutputStream outputStream = null;
-					try {
-						inputStream = url.openStream();
-						outputStream = fileManager.createFile(targetDirectory + getRelativeFilePath(sourceDirectory, filePath)).getOutputStream();
-						IOUtils.copy(inputStream, outputStream);
-					} catch (final Exception e) {
-						throw new IllegalStateException("Encountered an error during copying of resources for the add-on.", e);
-					} finally {
-						IOUtils.closeQuietly(inputStream);
-						IOUtils.closeQuietly(outputStream);
-					}
-				}
-			}
-		}
-	}
-
-	private String getRelativeFilePath(String sourceBaseDirectory, String filePath) {
-		String result = null;
-		int index = StringUtils.indexOf(filePath, sourceBaseDirectory);
-		if (index != -1) {
-			result = filePath.substring(index);
-			result = result.replace(sourceBaseDirectory, "");
-		}
-		return result;
-	}
-
 }
