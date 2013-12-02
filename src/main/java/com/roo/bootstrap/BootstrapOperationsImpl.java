@@ -1,6 +1,9 @@
 package com.roo.bootstrap;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -88,7 +91,9 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 
 		copyDirectoryContents("images/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "images"), true);
 		copyDirectoryContents("js/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "js"), true);
-		copyDirectoryContents("fonts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "fonts"), true);
+		log.info("pre copy");
+		copyDirectoryContentsOldschool("fonts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "fonts"));
+		log.info("after copy");
 		copyDirectoryContents("styles/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "styles"), true);
 		copyDirectoryContents("WEB-INF/layouts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "layouts"), true);
 		copyDirectoryContents("WEB-INF/views/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "views"), true);
@@ -113,5 +118,51 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 			dependencies.add(new Dependency(dependencyElement));
 		}
 		projectOperations.addDependencies(projectOperations.getFocusedModuleName(), dependencies);
+	}
+
+	private void copyDirectoryContentsOldschool(String sourceDirectory, String targetDirectory){
+		boolean replace = false; //never replace!
+		
+		Validate.notBlank(sourceDirectory, "Source path required");
+		Validate.notBlank(targetDirectory, "Target directory required");
+
+		if (!targetDirectory.endsWith("/")){
+			targetDirectory += "/";
+		}
+
+		if (!fileManager.exists(targetDirectory)){
+			fileManager.createDirectory(targetDirectory);
+		}
+
+		final String path = FileUtils.getPath(getClass(), sourceDirectory);
+		final Iterable<URL> urls = OSGiUtils.findEntriesByPattern(
+				context.getBundleContext(), path);
+		Validate.notNull(urls, "Could not search bundles for resources for Ant Path '" + path + "'");
+		for (final URL url : urls){
+			final String fileName = url.getPath().substring(url.getPath().lastIndexOf("/") + 1);
+			if (replace){
+				try{
+					String contents = IOUtils.toString(url);
+					fileManager.createOrUpdateTextFileIfRequired(targetDirectory + fileName, contents, false);
+				}catch (final Exception e){
+					throw new IllegalStateException(e);
+				}
+			}else{
+				if (!fileManager.exists(targetDirectory + fileName)){
+					InputStream inputStream = null;
+					OutputStream outputStream = null;
+					try{
+						inputStream = url.openStream();
+						outputStream = fileManager.createFile(targetDirectory + fileName).getOutputStream();
+						IOUtils.copy(inputStream, outputStream);
+					}catch (final Exception e){
+						throw new IllegalStateException("Encountered an error during copying of resources for the add-on.",	e);
+					}finally{
+						IOUtils.closeQuietly(inputStream);
+						IOUtils.closeQuietly(outputStream);
+					}
+				}
+			}
+		}
 	}
 }

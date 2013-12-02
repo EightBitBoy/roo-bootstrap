@@ -14,11 +14,11 @@ To run roo-bootstrap download or clone the repository and run "mvn package" to b
 
 To activate the pluging fire up roo and type the following command:
 
-	osgi start --url file://[YOUR_FILE_PATH]/de.eightbitboy.roo.bootstrap-0.2.0.jar
+	osgi start --url file://[YOUR_FILE_PATH]/de.eightbitboy.roo.bootstrap-0.3.0.jar
 
 For example at my machine it looks this (notice the *three* slashes!):
 
-	osgi start --url  file:///C:/roo-bootstrap/de.eightbitboy.roo.bootstrap-0.2.0.jar
+	osgi start --url  file:///C:/roo-bootstrap/de.eightbitboy.roo.bootstrap-0.3.0.jar
 
 To install roo-bootstrap in your project type the following command:
 
