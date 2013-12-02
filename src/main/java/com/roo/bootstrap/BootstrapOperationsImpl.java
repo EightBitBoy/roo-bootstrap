@@ -91,9 +91,7 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 
 		copyDirectoryContents("images/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "images"), true);
 		copyDirectoryContents("js/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "js"), true);
-		log.info("pre copy");
-		copyDirectoryContentsOldschool("fonts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "fonts"));
-		log.info("after copy");
+		copyDirectoryContents("fonts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "fonts"), false);
 		copyDirectoryContents("styles/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "styles"), true);
 		copyDirectoryContents("WEB-INF/layouts/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "layouts"), true);
 		copyDirectoryContents("WEB-INF/views/*.*", pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, "WEB-INF" + SEPARATOR + "views"), true);
@@ -120,7 +118,7 @@ public class BootstrapOperationsImpl extends AbstractOperations implements Boots
 		projectOperations.addDependencies(projectOperations.getFocusedModuleName(), dependencies);
 	}
 
-	private void copyDirectoryContentsOldschool(String sourceDirectory, String targetDirectory){
+	private void copyDirectoryContentsCustom(String sourceDirectory, String targetDirectory){
 		boolean replace = false; //never replace!
 		
 		Validate.notBlank(sourceDirectory, "Source path required");
